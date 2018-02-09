@@ -1,5 +1,7 @@
+const config = require('config')
 const keythereum = require('keythereum')
 const secp256k1 = require('secp256k1/elliptic')
+const params = config.get('wallet.params')
 
 const createKey = (params, privateKey) =>
 	new Promise(resolve => keythereum.create(params, dk => {
@@ -21,11 +23,22 @@ const createKey = (params, privateKey) =>
 const dumpKey = (dk, password, options) =>
 	new Promise(resolve => keythereum.dump(password, dk.privateKey, dk.salt, dk.iv, options, resolve))
 
-const recoverKey = (password, keyObject) =>
-	new Promise(resolve => keythereum.recover(password, keyObject, privateKey => resolve(privateKey)))
+const getDk = async (password, keyObject) => {
+	try {
+		if (keyObject) {
+			const privateKey = keythereum.recover(password, keyObject)
+			return await createKey(params, privateKey)
+		}
+		else {
+			return await createKey(params)
+		}
+	}
+	catch (error) {
+		throw new Error(error)
+	}
+}
 
 module.exports = {
-	createKey,
+	getDk,
 	dumpKey,
-	recoverKey,
 }

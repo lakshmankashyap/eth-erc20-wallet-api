@@ -13,7 +13,7 @@ const estimateTransactionCost = (req, res, next) => {
 const createWallet = (req, res, next) => {
 	winston.debug('controller.createWallet called')
 
-	return walletService.createWallet(req.body)
+	return walletService.createOrImportWallet(req.body)
 		.then(wallet => dbService.insertWallet(wallet))
 		.then(wallet => res.status(201).json(wallet))
 		.catch(error => next(error))
@@ -22,7 +22,7 @@ const createWallet = (req, res, next) => {
 const importWallet = (req, res, next) => {
 	winston.debug('controller.importWallet called')
 
-	return walletService.importWallet(req.body)
+	return walletService.createOrImportWallet(req.body)
 		.then(wallet => dbService.insertWallet(wallet))
 		.then(wallet => res.status(201).json(wallet))
 		.catch(error => next(error))
