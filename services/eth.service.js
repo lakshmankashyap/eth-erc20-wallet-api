@@ -1,0 +1,2 @@
+// getBalance
+// getGasPrice

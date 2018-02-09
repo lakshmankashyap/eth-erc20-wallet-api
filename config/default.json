@@ -1,0 +1,24 @@
+{
+    "listen": {
+        "host": "localhost",
+        "port": 3000
+    },
+    "db": {
+        "url": "mongodb://127.0.0.1/eth-erc20-wallet"
+    },
+    "wallet": {
+        "params": {
+            "keyBytes": 32,
+            "ivBytes": 16
+        },
+        "options": {
+            "kdf": "pbkdf2",
+            "cipher": "aes-128-ctr",
+            "kdfparams": {
+                "c": 262144,
+                "dklen": 32,
+                "prf": "hmac-sha256"
+            }
+        }
+    } 
+}
