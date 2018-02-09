@@ -28,12 +28,10 @@ const getDk = async (password, keyObject) => {
 		if (keyObject) {
 			const privateKey = keythereum.recover(password, keyObject)
 			return await createKey(params, privateKey)
-		}
-		else {
+		} else {
 			return await createKey(params)
 		}
-	}
-	catch (error) {
+	} catch (error) {
 		throw new Error(error)
 	}
 }

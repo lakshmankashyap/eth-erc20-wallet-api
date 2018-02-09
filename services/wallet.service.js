@@ -14,8 +14,7 @@ const createOrImportWallet = async ({ name, password, keyObject }) => {
 			balances: null,
 			key: generatedKeyObject
 		}
-	} 
-	catch (error) {
+	} catch (error) {
 		throw new Error(error)
 	}
 }
