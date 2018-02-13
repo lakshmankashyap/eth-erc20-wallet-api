@@ -26,7 +26,7 @@ const dumpKey = (dk, password, options) =>
 const getDk = async (password, keyObject) => {
 	try {
 		if (keyObject) {
-			const privateKey = keythereum.recover(password, keyObject)
+			const privateKey = keythereum.recover(password, keyObject) // does not catch error if async
 			return await createKey(params, privateKey)
 		} else {
 			return await createKey(params)
