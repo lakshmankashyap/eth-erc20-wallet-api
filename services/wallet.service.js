@@ -11,7 +11,7 @@ const createOrImportWallet = async ({ name, password, keyObject }) => {
 		return {
 			name,
 			address: addHexPrefix(generatedKeyObject.address),
-			balances: null,
+			balances: [],
 			key: generatedKeyObject
 		}
 	} catch (error) {

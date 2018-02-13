@@ -1,8 +1,11 @@
+const winston = require('winston')
+const Wallet = require('../models/wallet.model')
+
 const getAllTransactions = () => {}
 const getTransactions = () => {}
 const getWallet = () => {}
 const getWallets = () => {}
-const insertWallet = wallet => Promise.resolve(wallet)
+const insertWallet = wallet => new Wallet(wallet).save()
 const saveTransactions = () => {}
 const updateWallet = () => {}
 const updateWalletBalances = () => {}
