@@ -1,6 +1,6 @@
 const winston = require('winston')
-const walletService = require('./services/wallet.service')
 const dbService = require('./services/db.service')
+const walletService = require('./services/wallet.service')
 
 const estimateTransactionCost = (req, res, next) => {
 	winston.debug('controller.estimateTransactionCost', req.body)
