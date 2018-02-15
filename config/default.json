@@ -20,5 +20,11 @@
                 "prf": "hmac-sha256"
             }
         }
-    } 
+    },
+    "etherscan": {
+        "url": "https://rinkeby.etherscan.io/api",
+        "apikey": "YourApiKeyToken"
+    },
+    "chainId": "0x04"
+
 }
