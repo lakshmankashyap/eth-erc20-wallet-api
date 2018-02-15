@@ -3,7 +3,7 @@ const walletService = require('./services/wallet.service')
 const dbService = require('./services/db.service')
 
 const estimateTransactionCost = (req, res, next) => {
-	winston.debug('controller.estimateTransactionCost called')
+	winston.debug('controller.estimateTransactionCost', req.body)
 
 	return walletService.estimateTransactionCost(req.body)
 		.then(txCost => res.status(200).json(txCost))
@@ -11,7 +11,7 @@ const estimateTransactionCost = (req, res, next) => {
 }
 
 const createWallet = (req, res, next) => {
-	winston.debug('controller.createWallet called')
+	winston.debug('controller.createWallet', req.body)
 
 	return walletService.createOrImportWallet(req.body)
 		.then(wallet => dbService.insertWallet(wallet))
@@ -20,7 +20,7 @@ const createWallet = (req, res, next) => {
 }
 
 const importWallet = (req, res, next) => {
-	winston.debug('controller.importWallet called')
+	winston.debug('controller.importWallet', req.body)
 
 	return walletService.createOrImportWallet(req.body)
 		.then(wallet => dbService.insertWallet(wallet))
@@ -29,7 +29,7 @@ const importWallet = (req, res, next) => {
 }
 
 const getAllTransactions = (req, res, next) => {
-	winston.debug('controller.getAllTransactions called')
+	winston.debug('controller.getAllTransactions', req.body)
 
 	return dbService.getAllTransactions(req.body)
 		.then(transactions => res.status(200).json(transactions))
@@ -37,7 +37,7 @@ const getAllTransactions = (req, res, next) => {
 }
 
 const getGasPrice = (req, res, next) => {
-	winston.debug('controller.getGasPrice called')
+	winston.debug('controller.getGasPrice', req.body)
 
 	return walletService.getGasPrice(req.body)
 		.then(gasPrice => res.status(200).json(gasPrice))
@@ -45,7 +45,7 @@ const getGasPrice = (req, res, next) => {
 }
 
 const getTransactions = (req, res, next) => {
-	winston.debug('controller.getTransactions called')
+	winston.debug('controller.getTransactions', req.body)
 
 	return dbService.getTransactions(req.body)
 		.then(transactions => res.status(200).json(transactions))
@@ -53,7 +53,7 @@ const getTransactions = (req, res, next) => {
 }
 
 const getWallet = (req, res, next) => {
-	winston.debug('controller.getWallet called')
+	winston.debug('controller.getWallet', req.body)
 
 	return dbService.getWallet(req.body)
 		.then(wallet => res.status(200).json(wallet))
@@ -61,7 +61,7 @@ const getWallet = (req, res, next) => {
 }
 
 const getWallets = (req, res, next) => {
-	winston.debug('controller.getWallets called')
+	winston.debug('controller.getWallets', req.body)
 
 	return dbService.getWallets(req.body)
 		.then(wallets => res.status(200).json(wallets))
@@ -69,7 +69,7 @@ const getWallets = (req, res, next) => {
 }
 
 const removeWallet = (req, res, next) => {
-	winston.debug('controller.removeWallet called')
+	winston.debug('controller.removeWallet', req.body)
 
 	return dbService.removeWallet(req.body)
 		.then(() => res.status(204))
@@ -77,7 +77,7 @@ const removeWallet = (req, res, next) => {
 }
 
 const removeWallets = (req, res, next) => {
-	winston.debug('controller.removeWallets called')
+	winston.debug('controller.removeWallets', req.body)
 
 	return dbService.removeWallets(req.body)
 		.then(() => res.status(204))
@@ -85,7 +85,7 @@ const removeWallets = (req, res, next) => {
 }
 
 const sendRawTransaction = (req, res, next) => {
-	winston.debug('controller.sendRawTransaction called')
+	winston.debug('controller.sendRawTransaction', req.body)
 
 	return walletService.sendRawTransaction(req.body)
 		.then(txHash => res.status(200).json(txHash))
@@ -93,7 +93,7 @@ const sendRawTransaction = (req, res, next) => {
 }
 
 const updateWallet = (req, res, next) => {
-	winston.debug('controller.updateWallet called')
+	winston.debug('controller.updateWallet', req.body)
 
 	return dbService.updateWallet(req.body)
 		.then(wallet => res.status(204).json(wallet))
